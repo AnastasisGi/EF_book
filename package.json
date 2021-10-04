@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "dev-express": "nodemon server/server.js --watch server",
     "start": "next start",
     "lint": "eslint '**/*.js' '**/*.jsx'"
   },

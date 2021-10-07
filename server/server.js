@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const next = require('next');
-
+const User = require('./models/User');
 
 require('dotenv').config();
 const dev = process.env.NODE_ENV !== 'production';
@@ -29,23 +29,21 @@ app.prepare().then(()=>{
 
   
 
-  server.get('/', (req, res) => {
-    const user = { email: 'team@builderboo11k.org!' };
+ server.get('/', async (req, res) => {
+    // const user = { email: 'team@builderbook.org' };
+    const user = await User.findOne({ slug: 'team-builder-book' });
     app.render(req, res, '/', { user });
   });
 
   server.get('*',(req,res)=> handle(req,res));
 
-  
-server.listen(port, (err) => {
+  server.get('*', (req, res) => handle(req, res));
+
+  server.listen(port, (err) => {
     if (err) throw err;
     console.log(`> Ready on ${ROOT_URL}`);
-    console.log(process.env.MONGO_URL_TEST)
   });
-
-
 });
-
 
 
 

@@ -26,7 +26,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    console.log(pageProps);
+    // console.log(pageProps);
 
     return (
       <ThemeProvider theme={theme}>
@@ -34,7 +34,7 @@ class MyApp extends App {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <CssBaseline />
-        <Header {...pageProps} />
+        <Header {...pageProps}/>
         <Component {...pageProps} />
       </ThemeProvider>
     );

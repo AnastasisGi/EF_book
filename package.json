@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
     "build": "next build",
-    "dev-express": "nodemon server/server.js --watch server",
+    "dev": "nodemon server/server.js --watch server",
     "start": "next start",
     "lint": "eslint '**/*.js' '**/*.jsx'"
   },
@@ -20,6 +19,10 @@
     "next": "^9.1.2",
     "prop-types": "15.7.2",
     "react": "^16.13.1",
+    "lodash": "4.17.21",
+    "nprogress": "0.2.0",
+    "passport": "0.4.1",
+    "passport-google-oauth": "2.0.0",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {

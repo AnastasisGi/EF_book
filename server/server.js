@@ -30,24 +30,23 @@ const app = next({dev});
 const handle = app.getRequestHandler();
 
 
-
 app.prepare().then(()=>{
   const server = express();
-const MongoStore = mongoSessionStore(session);
-
-
-
+  const MongoStore = mongoSessionStore(session);
+  
+  
+  
 
   const sess = {
-  name: process.env.SESSION_NAME,
-  secret: process.env.SESSION_SECRET,
-  store: new MongoStore({
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
+    store: new MongoStore({
       mongooseConnection: mongoose.connection,
       ttl: 14 * 24 * 60 * 60, // save session 14 days
     }),
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
     httpOnly: true,
     maxAge: 14 * 24 * 60 * 60 * 1000,
   },
@@ -55,19 +54,19 @@ const MongoStore = mongoSessionStore(session);
 
 server.use(session(sess));
 
- server.get('/', async (req, res) => {
-    // const user = { email: 'team@builderbook.org' };
-     req.session.foo = 'bar';
-    const user = await User.findOne({ slug: 'team-builder-book' });
-    app.render(req, res, '/', { user });
-  });
+server.get('/', async (req, res) => {
+  // const user = { email: 'team@builderbook.org' };
+   req.session.foo = 'total';
+  const user = await User.findOne({ slug: 'team-builder-book' });
+  app.render(req, res, '/', { user });
+});
 
-  server.get('*',(req,res)=> handle(req,res));
+server.get('*',(req,res)=> handle(req,res));
 
-  server.listen(port, (err) => {
-    if (err) throw err;
-    console.log(`> Ready on ${ROOT_URL}`);
-  });
+server.listen(port, (err) => {
+  if (err) throw err;
+  // console.log(`> Ready on ${ROOT_URL}`);
+});
 });
 
 

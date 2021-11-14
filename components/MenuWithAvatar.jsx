@@ -25,6 +25,7 @@ class MenuWithAvatar extends React.Component{
 
     handleClick = (event) =>{
         this.setState({anchorEl: event.currentTarget})
+        console.log(this.state)
     };
 
     handleClose = () => {

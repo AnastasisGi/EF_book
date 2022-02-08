@@ -4,10 +4,18 @@ import App from 'next/app';
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import { theme } from '../lib/theme';
-
 import Header from '../components/Header';
+
+
+
+Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
+
+
 
 const propTypes = {
   Component: PropTypes.elementType.isRequired,

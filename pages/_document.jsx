@@ -3,7 +3,7 @@ import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 
 class MyDocument extends Document {
-  render() {
+  render() {    
     return (
       <Html lang="en">
         <Head>
@@ -90,7 +90,7 @@ MyDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>
-    originalRenderPage({
+    originalRenderPage({  
       enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
 

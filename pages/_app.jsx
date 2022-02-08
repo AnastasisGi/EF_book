@@ -13,7 +13,7 @@ const propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired, // eslint-disable-line
 };
-
+  
 class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.

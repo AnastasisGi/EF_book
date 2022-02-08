@@ -45,19 +45,19 @@ app.prepare().then(()=>{
       ttl: 14 * 24 * 60 * 60, // save session 14 days
     }),
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false, 
     cookie: {
     httpOnly: true,
     maxAge: 14 * 24 * 60 * 60 * 1000,
+    domain: 'localhost',
   },
 };
 
 server.use(session(sess));
 
 server.get('/', async (req, res) => {
-  // const user = { email: 'team@builderbook.org' };
-   req.session.foo = 'total';
   const user = await User.findOne({ slug: 'team-builder-book' });
+  req.user=user;
   app.render(req, res, '/', { user });
 });
 
@@ -65,7 +65,7 @@ server.get('*',(req,res)=> handle(req,res));
 
 server.listen(port, (err) => {
   if (err) throw err;
-  // console.log(`> Ready on ${ROOT_URL}`);
+  console.log(`> Ready on ${ROOT_URL}`);
 });
 });
 

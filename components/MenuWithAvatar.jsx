@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import Link from 'next/link';
 import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 const propTypes = {
@@ -59,12 +60,23 @@ class MenuWithAvatar extends React.Component{
           keepMounted
         >
           <p />
-          {options.map((option) => (
+           {options.map((option) => (
             <div id="wrappingLink" key={option.text}>
-              <Link href={option.href} as={option.as || option.href}>
-                <a style={{ padding: '0px 20px' }}>{option.text}</a>
-              </Link>
-              <p />
+              {option.anchor ? (
+                <MenuItem
+                  onClick={(event) => {
+                    event.preventDefault();
+                    window.location.href = option.href;
+                    this.handleClose();
+                  }}
+                >
+                  {option.text}
+                </MenuItem>
+              ) : (
+                <Link href={option.href} as={option.as || option.href}>
+                  <MenuItem>{option.text}</MenuItem>
+                </Link>
+              )}
             </div>
           ))}
         </Menu>

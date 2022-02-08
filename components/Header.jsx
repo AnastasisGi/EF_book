@@ -12,10 +12,12 @@ const optionsMenu = [
   {
     text: 'Got question?',
     href: 'https://github.com/async-labs/builderbook/issues',
+    anchor:true,
   },
   {
     text: 'Log out',
     href: '/logout',
+    anchor:true,
   },
 ];
 

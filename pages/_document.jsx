@@ -16,6 +16,10 @@ class MyDocument extends Document {
             href="https://storage.googleapis.com/builderbook/favicon32.png"
           />
           <link
+          rel="stylesheet"
+          href="https://storage.googleapis.com/builderbook/nprogress.min.css"
+          />
+          <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Muli:300,400:latin"
           />

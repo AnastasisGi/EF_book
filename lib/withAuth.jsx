@@ -40,9 +40,9 @@ export default function withAuth(
             //     return;
             // }
 
-            if(logoutRequired){
-                Router.push('/');
-            }
+            // if(logoutRequired && user){
+            //     Router.push('/');
+            // }
 
 
 
